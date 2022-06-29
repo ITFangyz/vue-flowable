@@ -109,7 +109,7 @@
     <el-dialog :title="formTitle" :visible.sync="formConfOpen" width="60%" append-to-body>
       <div class="test-form">
         <!-- <parser :key="new Date().getTime()"  :form-conf="formConf" /> -->
-        <build-form   :form-conf="formConf" />
+        <build-form   :form-conf="formConf"  showType="view" />
       </div>
     </el-dialog>
   </div>

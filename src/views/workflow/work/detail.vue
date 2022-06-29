@@ -53,7 +53,7 @@
           <el-col :span="20" :offset="2" v-if="variableOpen">
             <div>
               <!-- <parser :key="new Date().getTime()" :form-conf="variablesData"/> -->
-              <build-form :form-conf="variablesData" :form-info="formInfo"></build-form>
+              <build-form :form-conf="variablesData" :form-info="formInfo" showType="view" disabled="true"></build-form>
             </div>
           </el-col>
 
@@ -61,7 +61,7 @@
           <el-col :span="16" :offset="4" v-if="formConfOpen">
             <div class="form-conf">
               <!-- <parser :key="new Date().getTime()" :form-conf="formConf" @submit="submitForm" ref="parser" @getData="getData"/> -->
-              <build-form :form-conf="formConf"></build-form>
+              <build-form :form-conf="formConf" showType="alter" disabled="true"></build-form>
             </div>
           </el-col>
         </el-card>

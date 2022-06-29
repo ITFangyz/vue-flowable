@@ -4,8 +4,10 @@
       :value="formDataCopy"
       @submit="handleSubmit"
       ref="KFB"
+      :disabled="disabled"
+      :dynamicData="dynamicData"
     />
-    <div class="bottom-btn">
+    <div class="bottom-btn" v-if="showType == 'alter'">
         <a-button type="primary" @click="submitForm">提交</a-button>
         <a-button type="primary">重置</a-button>
     </div>
@@ -24,6 +26,7 @@
 import { deepClone } from '@/utils/index'
 export default {
     props: {
+        //表单信息
         formConf: {
             // type: Object,
             required: true
@@ -32,9 +35,21 @@ export default {
             // type:Object,
             require:false
         },
+        //表单信息
         formInfo:{
             // type:Object,
             require:false
+        },
+        // 展示类型，判断是否需要展示按钮组
+        showType:{
+            type:String,
+            require:false
+        },
+        //表单禁用
+        disabled:{
+            type:Boolean,
+            require: false,
+            default: false
         }
     },
     data() {
@@ -45,21 +60,21 @@ export default {
             },
             formDataCopy:deepClone(this.formConf),
             dynamicData: {
-                treeData: [
+                cityData: [
                 {
                     value: "1",
-                    label: "树形选项1",
+                    label: "广东",
                     children: [
-                    { value: "11", label: "树形选项1-1" },
-                    { value: "12", label: "树形选项1-2" }
+                    { value: "11", label: "深圳" },
+                    { value: "12", label: "广州" }
                     ]
                 },
                 {
                     value: "2",
-                    label: "树形选项2",
+                    label: "湖北",
                     children: [
-                    { value: "21", label: "树形选项2-1" },
-                    { value: "22", label: "树形选项2-2" }
+                    { value: "21", label: "武汉" },
+                    { value: "22", label: "咸宁" }
                     ]
                 }
                 ]
@@ -110,10 +125,10 @@ export default {
         // 通过函数获取数据
         this.$refs.KFB.getData().then(res => {
             // 获取数据成功
-            // alert(JSON.stringify(res));
             Object.assign(this.processParams, res)
             // this.processParams = JSON.stringify(res)
             this.processParams.variables = JSON.stringify(this.formDataCopy)
+            //传递数据给父组件，做后续流程发起处理
             this.$emit('submit', this.processParams)
         }).catch(err => {
             console.log(err, "校验失败");
@@ -148,7 +163,9 @@ export default {
   },
   created(){
     console.log("子组件接受formInfo", this.formInfo)
+    // console.log("子组件", this.formConf)
     // console.log("子组件接受form-conf", this.formConf)
+    console.log("子组件接受showType", this.showType)
     
   },
   mounted () {

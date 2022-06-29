@@ -201,5 +201,8 @@ export default {
 </script>
 
 <style lang='scss'>
-@import '@/styles/home';
+// @import '@/styles/home';
+.form-designer-container-9136076486841527 .content aside{
+  width: 320px;
+}
 </style>

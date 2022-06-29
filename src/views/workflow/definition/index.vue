@@ -159,7 +159,7 @@
     <el-dialog :title="formTitle" :visible.sync="formConfOpen" width="50%" append-to-body>
       <div class="test-form">
         <!-- <parser :key="new Date().getTime()" :form-conf="formConf" /> -->
-        <build-form :form-conf="formConf"></build-form>
+        <build-form :form-conf="formConf" showType="view"></build-form>
       </div>
     </el-dialog>
 
@@ -184,7 +184,7 @@
         <el-col :span="14" :xs="24">
           <div v-if="currentRow">
             <!-- <parser :key="new Date().getTime()" :form-conf="currentRow" /> -->
-            <build-form :form-conf="currentRow"></build-form>
+            <build-form :form-conf="currentRow" showType="view"></build-form>
           </div>
         </el-col>
       </el-row>

@@ -7,7 +7,7 @@
       <el-col :span="18" :offset="3">
         <div class="form-conf" v-if="formOpen">
           <!-- <parser :key="new Date().getTime()" :form-conf="formData" @submit="submit" ref="parser" @getData="getData"/> -->
-          <build-form :form-conf="formData" @submit="submit"></build-form>
+          <build-form :form-conf="formData" @submit="submit"  showType="alter"></build-form>
         </div>
       </el-col>
     </el-card>
@@ -86,10 +86,10 @@ export default {
           // variables.variables = formData;
           // 启动流程并将表单数据加入流程变量
           startProcess(this.definitionId, JSON.stringify(data)).then(res => {
-            this.msgSuccess(res);
-            // this.$router.push({
-            //   path: '/work/own'
-            // })
+            this.msgSuccess(res.msg);
+            this.$router.push({
+              path: '/work/own'
+            })
           })
         }
       }

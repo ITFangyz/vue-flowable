@@ -26,6 +26,8 @@ import KFormDesign from 'k-form-design/lib/k-form-design-mini.umd.min'
 import 'k-form-design/lib/k-form-design.css'
 Vue.use(KFormDesign)
 
+
+
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
